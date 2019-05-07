@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.school.cc.mapper.AbnormalMapper" >
+  <resultMap id="BaseResultMap" type="com.school.cc.pojo.Abnormal" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="warn_type" property="warnType" jdbcType="VARCHAR" />
+    <result column="warn_room" property="warnRoom" jdbcType="VARCHAR" />
+    <result column="report_time" property="reportTime" jdbcType="TIMESTAMP" />
+    <result column="duration" property="duration" jdbcType="VARCHAR" />
+    <result column="abnormal_num" property="abnormalNum" jdbcType="INTEGER" />
+    <result column="room_state" property="roomState" jdbcType="VARCHAR" />
+    <result column="hotel_id" property="hotelId" jdbcType="VARCHAR" />
+    <result column="interloper" property="interloper" jdbcType="VARCHAR" />
+    <result column="event_desc" property="eventDesc" jdbcType="VARCHAR" />
+    <result column="handle_result" property="handleResult" jdbcType="VARCHAR" />
+    <result column="handle_state" property="handleState" jdbcType="VARCHAR" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="del_flag" property="delFlag" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, warn_type, warn_room, report_time, duration, abnormal_num, room_state, hotel_id, 
+    interloper, event_desc, handle_result, handle_state, create_by, create_date, update_by, 
+    update_date, remarks, del_flag
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.school.cc.pojo.AbnormalExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from abnormal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from abnormal
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from abnormal
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.school.cc.pojo.AbnormalExample" >
+    delete from abnormal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.school.cc.pojo.Abnormal" >
+    insert into abnormal (id, warn_type, warn_room, 
+      report_time, duration, abnormal_num, 
+      room_state, hotel_id, interloper, 
+      event_desc, handle_result, handle_state, 
+      create_by, create_date, update_by, 
+      update_date, remarks, del_flag
+      )
+    values (#{id,jdbcType=VARCHAR}, #{warnType,jdbcType=VARCHAR}, #{warnRoom,jdbcType=VARCHAR}, 
+      #{reportTime,jdbcType=TIMESTAMP}, #{duration,jdbcType=VARCHAR}, #{abnormalNum,jdbcType=INTEGER}, 
+      #{roomState,jdbcType=VARCHAR}, #{hotelId,jdbcType=VARCHAR}, #{interloper,jdbcType=VARCHAR}, 
+      #{eventDesc,jdbcType=VARCHAR}, #{handleResult,jdbcType=VARCHAR}, #{handleState,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateBy,jdbcType=VARCHAR}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{delFlag,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.school.cc.pojo.Abnormal" >
+    insert into abnormal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="warnType != null" >
+        warn_type,
+      </if>
+      <if test="warnRoom != null" >
+        warn_room,
+      </if>
+      <if test="reportTime != null" >
+        report_time,
+      </if>
+      <if test="duration != null" >
+        duration,
+      </if>
+      <if test="abnormalNum != null" >
+        abnormal_num,
+      </if>
+      <if test="roomState != null" >
+        room_state,
+      </if>
+      <if test="hotelId != null" >
+        hotel_id,
+      </if>
+      <if test="interloper != null" >
+        interloper,
+      </if>
+      <if test="eventDesc != null" >
+        event_desc,
+      </if>
+      <if test="handleResult != null" >
+        handle_result,
+      </if>
+      <if test="handleState != null" >
+        handle_state,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="updateDate != null" >
+        update_date,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="delFlag != null" >
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="warnType != null" >
+        #{warnType,jdbcType=VARCHAR},
+      </if>
+      <if test="warnRoom != null" >
+        #{warnRoom,jdbcType=VARCHAR},
+      </if>
+      <if test="reportTime != null" >
+        #{reportTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="duration != null" >
+        #{duration,jdbcType=VARCHAR},
+      </if>
+      <if test="abnormalNum != null" >
+        #{abnormalNum,jdbcType=INTEGER},
+      </if>
+      <if test="roomState != null" >
+        #{roomState,jdbcType=VARCHAR},
+      </if>
+      <if test="hotelId != null" >
+        #{hotelId,jdbcType=VARCHAR},
+      </if>
+      <if test="interloper != null" >
+        #{interloper,jdbcType=VARCHAR},
+      </if>
+      <if test="eventDesc != null" >
+        #{eventDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="handleResult != null" >
+        #{handleResult,jdbcType=VARCHAR},
+      </if>
+      <if test="handleState != null" >
+        #{handleState,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.school.cc.pojo.AbnormalExample" resultType="java.lang.Integer" >
+    select count(*) from abnormal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update abnormal
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.warnType != null" >
+        warn_type = #{record.warnType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.warnRoom != null" >
+        warn_room = #{record.warnRoom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reportTime != null" >
+        report_time = #{record.reportTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.duration != null" >
+        duration = #{record.duration,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abnormalNum != null" >
+        abnormal_num = #{record.abnormalNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.roomState != null" >
+        room_state = #{record.roomState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hotelId != null" >
+        hotel_id = #{record.hotelId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.interloper != null" >
+        interloper = #{record.interloper,jdbcType=VARCHAR},
+      </if>
+      <if test="record.eventDesc != null" >
+        event_desc = #{record.eventDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.handleResult != null" >
+        handle_result = #{record.handleResult,jdbcType=VARCHAR},
+      </if>
+      <if test="record.handleState != null" >
+        handle_state = #{record.handleState,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createBy != null" >
+        create_by = #{record.createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createDate != null" >
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateBy != null" >
+        update_by = #{record.updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateDate != null" >
+        update_date = #{record.updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.remarks != null" >
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.delFlag != null" >
+        del_flag = #{record.delFlag,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update abnormal
+    set id = #{record.id,jdbcType=VARCHAR},
+      warn_type = #{record.warnType,jdbcType=VARCHAR},
+      warn_room = #{record.warnRoom,jdbcType=VARCHAR},
+      report_time = #{record.reportTime,jdbcType=TIMESTAMP},
+      duration = #{record.duration,jdbcType=VARCHAR},
+      abnormal_num = #{record.abnormalNum,jdbcType=INTEGER},
+      room_state = #{record.roomState,jdbcType=VARCHAR},
+      hotel_id = #{record.hotelId,jdbcType=VARCHAR},
+      interloper = #{record.interloper,jdbcType=VARCHAR},
+      event_desc = #{record.eventDesc,jdbcType=VARCHAR},
+      handle_result = #{record.handleResult,jdbcType=VARCHAR},
+      handle_state = #{record.handleState,jdbcType=VARCHAR},
+      create_by = #{record.createBy,jdbcType=VARCHAR},
+      create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      update_by = #{record.updateBy,jdbcType=VARCHAR},
+      update_date = #{record.updateDate,jdbcType=TIMESTAMP},
+      remarks = #{record.remarks,jdbcType=VARCHAR},
+      del_flag = #{record.delFlag,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.school.cc.pojo.Abnormal" >
+    update abnormal
+    <set >
+      <if test="warnType != null" >
+        warn_type = #{warnType,jdbcType=VARCHAR},
+      </if>
+      <if test="warnRoom != null" >
+        warn_room = #{warnRoom,jdbcType=VARCHAR},
+      </if>
+      <if test="reportTime != null" >
+        report_time = #{reportTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="duration != null" >
+        duration = #{duration,jdbcType=VARCHAR},
+      </if>
+      <if test="abnormalNum != null" >
+        abnormal_num = #{abnormalNum,jdbcType=INTEGER},
+      </if>
+      <if test="roomState != null" >
+        room_state = #{roomState,jdbcType=VARCHAR},
+      </if>
+      <if test="hotelId != null" >
+        hotel_id = #{hotelId,jdbcType=VARCHAR},
+      </if>
+      <if test="interloper != null" >
+        interloper = #{interloper,jdbcType=VARCHAR},
+      </if>
+      <if test="eventDesc != null" >
+        event_desc = #{eventDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="handleResult != null" >
+        handle_result = #{handleResult,jdbcType=VARCHAR},
+      </if>
+      <if test="handleState != null" >
+        handle_state = #{handleState,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        del_flag = #{delFlag,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.school.cc.pojo.Abnormal" >
+    update abnormal
+    set warn_type = #{warnType,jdbcType=VARCHAR},
+      warn_room = #{warnRoom,jdbcType=VARCHAR},
+      report_time = #{reportTime,jdbcType=TIMESTAMP},
+      duration = #{duration,jdbcType=VARCHAR},
+      abnormal_num = #{abnormalNum,jdbcType=INTEGER},
+      room_state = #{roomState,jdbcType=VARCHAR},
+      hotel_id = #{hotelId,jdbcType=VARCHAR},
+      interloper = #{interloper,jdbcType=VARCHAR},
+      event_desc = #{eventDesc,jdbcType=VARCHAR},
+      handle_result = #{handleResult,jdbcType=VARCHAR},
+      handle_state = #{handleState,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=CHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
