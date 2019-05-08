@@ -5,17 +5,49 @@ import java.util.Date;
 public class News {
     private Integer id;
 
-    private String desc;
+    private String des;
 
     private String poster;
 
     private String poster2;
 
+    private String url;
+
     private Date time;
 
     private Boolean del;
+    private transient Integer index;
+    private transient Integer count;
 
-    public Integer getId() {
+    /**
+	 * bare_field_comment
+	 */
+	public Integer getIndex() {
+		return index;
+	}
+
+	/**
+	 * bare_field_comment
+	 */
+	public void setIndex(Integer index) {
+		this.index = index;
+	}
+
+	/**
+	 * bare_field_comment
+	 */
+	public Integer getCount() {
+		return count;
+	}
+
+	/**
+	 * bare_field_comment
+	 */
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+
+	public Integer getId() {
         return id;
     }
 
@@ -23,12 +55,12 @@ public class News {
         this.id = id;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDes() {
+        return des;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setDes(String des) {
+        this.des = des == null ? null : des.trim();
     }
 
     public String getPoster() {
@@ -45,6 +77,14 @@ public class News {
 
     public void setPoster2(String poster2) {
         this.poster2 = poster2 == null ? null : poster2.trim();
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url == null ? null : url.trim();
     }
 
     public Date getTime() {

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.school.cc.mapper.NewsMapper;
 import com.school.cc.pojo.News;
-import com.school.cc.pojo.NewsExample;
 import com.school.cc.service.inter.NewsService;
 
 @Service
@@ -22,11 +21,10 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public List<News> select(int index, int count) {
-		NewsExample newsExample=new NewsExample();
-		
-		newsMapper.selectByExample(newsExample);
-		return null;
+	public List<News> selectByPage(News news) {
+		return newsMapper.selectByPage(news);
 	}
+
+	
 
 }

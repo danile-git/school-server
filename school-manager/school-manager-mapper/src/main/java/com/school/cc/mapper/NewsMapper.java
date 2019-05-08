@@ -17,6 +17,7 @@ public interface NewsMapper {
     int insertSelective(News record);
 
     List<News> selectByExample(NewsExample example);
+    List<News> selectByPage(News news);
 
     News selectByPrimaryKey(Integer id);
 

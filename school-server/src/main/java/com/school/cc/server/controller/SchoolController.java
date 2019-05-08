@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aofa.wear.common.pojo.CodeEnum;
@@ -44,13 +45,25 @@ public class SchoolController {
 
 
 	@RequestMapping("/news")
-	public Object news(){
+	public Object news(@RequestParam(value="i", defaultValue="0")Integer index,@RequestParam(value="c", defaultValue="5")Integer count){
 		
+		News news=new News();
+		news.setCount(count);
+		news.setIndex(index);
 		//return newsService.
-		return null;
+		return gson.toJson(newsService.selectByPage(news));
 	}
 	
-	
+	@RequestMapping("/order")
+	public Object appointment(String wxcode,@RequestParam(value="type", defaultValue="1")Integer type){
+		
+	//	News news=new News();
+	//	news.setCount(count);
+	//	news.setIndex(index);
+		//return newsService.
+	//	return gson.toJson(newsService.selectByPage(news));
+		return null;
+	}
 
 	/**
 	 * 平台通用应答
