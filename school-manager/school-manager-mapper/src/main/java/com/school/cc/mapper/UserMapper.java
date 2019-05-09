@@ -17,6 +17,7 @@ public interface UserMapper {
     int insertSelective(User record);
 
     List<User> selectByExample(UserExample example);
+    List<User> selectByWxcode(User user);
 
     User selectByPrimaryKey(Integer id);
 

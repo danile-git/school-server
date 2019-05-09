@@ -13,9 +13,11 @@ import com.aofa.wear.common.util.EnumSerializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.school.cc.pojo.News;
+import com.school.cc.pojo.User;
 import com.school.cc.server.pojo.AppDescription;
 import com.school.cc.server.pojo.Status;
 import com.school.cc.service.inter.NewsService;
+import com.school.cc.service.inter.UserService;
 @RestController
 public class SchoolController {
 
@@ -28,6 +30,8 @@ public class SchoolController {
 	
 	@Autowired
 	private NewsService newsService;
+	@Autowired
+	private UserService userService;
 
 	
 	GsonBuilder gsonBuilder = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").registerTypeAdapter(CodeEnum.class,
@@ -56,13 +60,10 @@ public class SchoolController {
 	
 	@RequestMapping("/order")
 	public Object appointment(String wxcode,@RequestParam(value="type", defaultValue="1")Integer type){
-		
-	//	News news=new News();
-	//	news.setCount(count);
-	//	news.setIndex(index);
-		//return newsService.
-	//	return gson.toJson(newsService.selectByPage(news));
-		return null;
+		User user=new User();
+		user.setWxCode(wxcode);
+		user.setCtype(type);
+		return gson.toJson(userService.selectByWxcode(user));
 	}
 
 	/**

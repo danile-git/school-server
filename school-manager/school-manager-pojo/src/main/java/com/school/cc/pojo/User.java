@@ -16,8 +16,116 @@ public class User {
     private Date time;
 
     private Boolean del;
+    
+    private String cname;
+    private Integer csex;
+    private String ctel;
+    private String caddress;
+    private Integer ctype;
+    private Integer cpmoney;
+    private Date ctime;
 
-    public Integer getId() {
+    
+    /**
+	 * bare_field_comment
+	 */
+	public String getCname() {
+		return cname;
+	}
+
+	/**
+	 * bare_field_comment
+	 */
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+
+	/**
+	 * bare_field_comment
+	 */
+	public Integer getCsex() {
+		return csex;
+	}
+
+	/**
+	 * bare_field_comment
+	 */
+	public void setCsex(Integer csex) {
+		this.csex = csex;
+	}
+
+	/**
+	 * bare_field_comment
+	 */
+	public String getCtel() {
+		return ctel;
+	}
+
+	/**
+	 * bare_field_comment
+	 */
+	public void setCtel(String ctel) {
+		this.ctel = ctel;
+	}
+
+	/**
+	 * bare_field_comment
+	 */
+	public String getCaddress() {
+		return caddress;
+	}
+
+	/**
+	 * bare_field_comment
+	 */
+	public void setCaddress(String caddress) {
+		this.caddress = caddress;
+	}
+
+	/**
+	 * bare_field_comment
+	 */
+	public Integer getCtype() {
+		return ctype;
+	}
+
+	/**
+	 * bare_field_comment
+	 */
+	public void setCtype(Integer ctype) {
+		this.ctype = ctype;
+	}
+
+	/**
+	 * bare_field_comment
+	 */
+	public Integer getCpmoney() {
+		return cpmoney;
+	}
+
+	/**
+	 * bare_field_comment
+	 */
+	public void setCpmoney(Integer cpmoney) {
+		this.cpmoney = cpmoney;
+	}
+
+	
+	/**
+	 * bare_field_comment
+	 */
+	public Date getCtime() {
+		return ctime;
+	}
+
+	/**
+	 * bare_field_comment
+	 */
+	public void setCtime(Date ctime) {
+		this.ctime = ctime;
+	}
+
+	public Integer getId() {
         return id;
     }
 

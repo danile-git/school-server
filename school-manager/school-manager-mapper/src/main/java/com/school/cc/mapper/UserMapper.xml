@@ -9,6 +9,15 @@
     <result column="tel" property="tel" jdbcType="VARCHAR" />
     <result column="time" property="time" jdbcType="TIMESTAMP" />
     <result column="del" property="del" jdbcType="BIT" />
+    
+    <result column="cname" property="cname" jdbcType="VARCHAR" />
+    <result column="csex" property="csex" jdbcType="INTEGER" />
+    <result column="ctel" property="ctel" jdbcType="VARCHAR" />
+    <result column="caddress" property="caddress" jdbcType="VARCHAR" />
+    <result column="ctype" property="ctype" jdbcType="INTEGER" />
+    <result column="cpmoney" property="cpmoney" jdbcType="INTEGER" />
+    <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
+   
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -91,6 +100,12 @@
     from user
     where id = #{id,jdbcType=INTEGER}
   </select>
+   <select id="selectByWxcode" resultMap="BaseResultMap" parameterType="com.school.cc.pojo.User" >
+    SELECT u.id,u.name,u.tel,c.name as cname,c.sex as csex,c.tel as ctel,c.address as caddress,type as ctype,pmoney as cpmoney,c.time as ctime
+    FROM `user` u LEFT JOIN customer c on u.id=c.user_id
+    where wx_code=#{wxCode,jdbcType=VARCHAR} and c.type=#{ctype,jdbcType=INTEGER} and u.del=0 and c.del=0
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from user
     where id = #{id,jdbcType=INTEGER}
