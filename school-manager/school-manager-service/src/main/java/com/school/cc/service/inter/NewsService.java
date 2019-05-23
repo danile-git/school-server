@@ -7,4 +7,5 @@ import com.school.cc.pojo.News;
 public interface NewsService {
 	boolean insert(News news);
 	List<News> selectByPage(News news);
+	
 }

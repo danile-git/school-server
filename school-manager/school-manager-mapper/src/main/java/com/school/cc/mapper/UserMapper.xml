@@ -100,6 +100,14 @@
     from user
     where id = #{id,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectUserByWxcode" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where wx_code = #{wxcode,jdbcType=VARCHAR} and del=0
+  </select>
+  
    <select id="selectByWxcode" resultMap="BaseResultMap" parameterType="com.school.cc.pojo.User" >
     SELECT u.id,u.name,u.tel,c.name as cname,c.sex as csex,c.tel as ctel,c.address as caddress,type as ctype,pmoney as cpmoney,c.time as ctime
     FROM `user` u LEFT JOIN customer c on u.id=c.user_id

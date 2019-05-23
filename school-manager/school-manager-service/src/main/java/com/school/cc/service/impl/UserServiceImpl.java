@@ -21,4 +21,17 @@ public class UserServiceImpl implements UserService {
 		return userList == null ? new ArrayList<User>() : userList;
 	}
 
+	@Override
+	public User selectUserByWxcode(String wxcode) {
+		return userMapper.selectUserByWxcode(wxcode);
+	}
+
+	@Override
+	public boolean insert(User user) {
+		
+		boolean flg=userMapper.insertSelective(user)>0?true:false;
+		return flg;
+	}
+	
+
 }

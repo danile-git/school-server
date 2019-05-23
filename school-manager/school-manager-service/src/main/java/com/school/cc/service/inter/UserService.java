@@ -6,4 +6,6 @@ import com.school.cc.pojo.User;
 
 public interface UserService {
 	List<User> selectByWxcode(User user);
+	User  selectUserByWxcode(String wxcode);
+	boolean insert(User user);
 }
