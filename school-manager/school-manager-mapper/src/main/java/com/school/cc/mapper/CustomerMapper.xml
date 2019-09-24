@@ -5,10 +5,12 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="age" property="age" jdbcType="INTEGER" />
     <result column="sex" property="sex" jdbcType="INTEGER" />
     <result column="tel" property="tel" jdbcType="VARCHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="course" property="course" jdbcType="VARCHAR" />
     <result column="pmoney" property="pmoney" jdbcType="INTEGER" />
     <result column="time" property="time" jdbcType="TIMESTAMP" />
     <result column="del" property="del" jdbcType="BIT" />
@@ -72,7 +74,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_id, name, sex, tel, address, type, pmoney, time, del
+    id, user_id, name, age, sex, tel, address, type, course, pmoney, time, del
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.school.cc.pojo.CustomerExample" >
     select
@@ -106,13 +108,13 @@
   </delete>
   <insert id="insert" parameterType="com.school.cc.pojo.Customer" >
     insert into customer (id, user_id, name, 
-      sex, tel, address, 
-      type, pmoney, time, 
-      del)
+      age, sex, tel, address, 
+      type, course, pmoney, 
+      time, del)
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{sex,jdbcType=INTEGER}, #{tel,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{type,jdbcType=INTEGER}, #{pmoney,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP}, 
-      #{del,jdbcType=BIT})
+      #{age,jdbcType=INTEGER}, #{sex,jdbcType=INTEGER}, #{tel,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{course,jdbcType=VARCHAR}, #{pmoney,jdbcType=INTEGER}, 
+      #{time,jdbcType=TIMESTAMP}, #{del,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.school.cc.pojo.Customer" >
     insert into customer
@@ -126,6 +128,9 @@
       <if test="name != null" >
         name,
       </if>
+      <if test="age != null" >
+        age,
+      </if>
       <if test="sex != null" >
         sex,
       </if>
@@ -137,6 +142,9 @@
       </if>
       <if test="type != null" >
         type,
+      </if>
+      <if test="course != null" >
+        course,
       </if>
       <if test="pmoney != null" >
         pmoney,
@@ -158,6 +166,9 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
       <if test="sex != null" >
         #{sex,jdbcType=INTEGER},
       </if>
@@ -169,6 +180,9 @@
       </if>
       <if test="type != null" >
         #{type,jdbcType=INTEGER},
+      </if>
+      <if test="course != null" >
+        #{course,jdbcType=VARCHAR},
       </if>
       <if test="pmoney != null" >
         #{pmoney,jdbcType=INTEGER},
@@ -199,6 +213,9 @@
       <if test="record.name != null" >
         name = #{record.name,jdbcType=VARCHAR},
       </if>
+      <if test="record.age != null" >
+        age = #{record.age,jdbcType=INTEGER},
+      </if>
       <if test="record.sex != null" >
         sex = #{record.sex,jdbcType=INTEGER},
       </if>
@@ -210,6 +227,9 @@
       </if>
       <if test="record.type != null" >
         type = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.course != null" >
+        course = #{record.course,jdbcType=VARCHAR},
       </if>
       <if test="record.pmoney != null" >
         pmoney = #{record.pmoney,jdbcType=INTEGER},
@@ -230,10 +250,12 @@
     set id = #{record.id,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
+      age = #{record.age,jdbcType=INTEGER},
       sex = #{record.sex,jdbcType=INTEGER},
       tel = #{record.tel,jdbcType=VARCHAR},
       address = #{record.address,jdbcType=VARCHAR},
       type = #{record.type,jdbcType=INTEGER},
+      course = #{record.course,jdbcType=VARCHAR},
       pmoney = #{record.pmoney,jdbcType=INTEGER},
       time = #{record.time,jdbcType=TIMESTAMP},
       del = #{record.del,jdbcType=BIT}
@@ -250,6 +272,9 @@
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
       <if test="sex != null" >
         sex = #{sex,jdbcType=INTEGER},
       </if>
@@ -261,6 +286,9 @@
       </if>
       <if test="type != null" >
         type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="course != null" >
+        course = #{course,jdbcType=VARCHAR},
       </if>
       <if test="pmoney != null" >
         pmoney = #{pmoney,jdbcType=INTEGER},
@@ -278,10 +306,12 @@
     update customer
     set user_id = #{userId,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
       sex = #{sex,jdbcType=INTEGER},
       tel = #{tel,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       type = #{type,jdbcType=INTEGER},
+      course = #{course,jdbcType=VARCHAR},
       pmoney = #{pmoney,jdbcType=INTEGER},
       time = #{time,jdbcType=TIMESTAMP},
       del = #{del,jdbcType=BIT}

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ResourceUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +24,7 @@ import com.aofa.wear.common.pojo.CodeEnum;
 import com.aofa.wear.common.util.EnumSerializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.school.cc.pojo.Customer;
 import com.school.cc.pojo.News;
 import com.school.cc.pojo.User;
 import com.school.cc.server.pojo.AppDescription;
@@ -85,6 +87,11 @@ public class SchoolController {
 		//user.setWxCode(wxcode);
 
 		return gson.toJson(userService.selectUserByWxcode(wxcode));
+	}
+	@RequestMapping("/appointment")
+	public Object appointment(@RequestBody Customer customer){
+		
+		return null;
 	}
 	//  public String uploadHeadImage(HttpServletRequest request, @RequestParam(value = "imgFile" , required=false) MultipartFile multipartFile)
 	@RequestMapping("/uploadImage")
@@ -159,118 +166,4 @@ public class SchoolController {
 		//return gson.toJson(userService.insert(user));
 	}
 	
-	
-	/**
-	 * 平台通用应答
-	 */
-	// @RequestMapping("/notify")
-	public Object Notify() {
-		return appDesc;
-	}
-
-	/**
-	 * 注册指静脉
-	 */
-	@RequestMapping("/fingervein_register")
-	public Object Fingervein_register() {
-		return appDesc;
-	}
-
-	/**
-	 * 查询指静脉
-	 */
-	@RequestMapping("/fingervein_query")
-	public Object fingervein_query() {
-		return appDesc;
-	}
-
-
-	/**
-	 * 禁用，启用 指静脉
-	 */
-	@RequestMapping("/fingervein_status_set")
-	public Object fingervein_status_set() {
-		return appDesc;
-	}
-
-	/**
-	 * 新增nfc
-	 */
-	@RequestMapping("/nfc_add")
-	public Object nfc_add() {
-		return appDesc;
-	}
-
-	/**
-	 * 删除nfc
-	 */
-	@RequestMapping("/nfc_delete")
-	public Object nfc_delete() {
-		return appDesc;
-	}
-
-	/**
-	 * 禁用启用nfc
-	 */
-	@RequestMapping("/nfc_status_set")
-	public Object nfc_status_set() {
-		return appDesc;
-	}
-
-	/**
-	 * 推送指静脉
-	 */
-	@RequestMapping("/fingervein_data_push")
-	public Object fingervein_data_push() {
-		return appDesc;
-	}
-
-	/**
-	 * 远程开锁
-	 */
-	@RequestMapping("/remote_unlock")
-	public Object remote_unlock() {
-		return appDesc;
-	}
-
-	/**
-	 * 能力管理
-	 */
-	@RequestMapping("/ability_manage")
-	public Object ability_manage() {
-		return appDesc;
-	}
-
-	/**
-	 * 参数设置
-	 */
-	@RequestMapping("/param_set")
-	public Object param_set() {
-		return appDesc;
-	}
-
-	/**
-	 * 参数查询
-	 */
-	@RequestMapping("/param_query")
-	public Object param_query() {
-		return appDesc;
-	}
-
-	/**
-	 * 设置蓝牙密码
-	 */
-	@RequestMapping("/ble_password_set")
-	public Object ble_password_set() {
-		return appDesc;
-	}
-
-	/**
-	 * 下发升级包
-	 */
-	@RequestMapping("/soft_package")
-	public Object soft_package() {
-		return appDesc;
-	}
-
 }

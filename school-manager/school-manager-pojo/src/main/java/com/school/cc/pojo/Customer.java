@@ -3,11 +3,15 @@ package com.school.cc.pojo;
 import java.util.Date;
 
 public class Customer {
+	private String wxcode;
+	
     private Integer id;
 
     private Integer userId;
 
     private String name;
+
+    private Integer age;
 
     private Integer sex;
 
@@ -17,13 +21,23 @@ public class Customer {
 
     private Integer type;
 
+    private String course;
+
     private Integer pmoney;
 
     private Date time;
 
     private Boolean del;
 
-    public Integer getId() {
+    public String getWxcode() {
+		return wxcode;
+	}
+
+	public void setWxcode(String wxcode) {
+		this.wxcode = wxcode;
+	}
+
+	public Integer getId() {
         return id;
     }
 
@@ -45,6 +59,14 @@ public class Customer {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public Integer getSex() {
@@ -77,6 +99,14 @@ public class Customer {
 
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public void setCourse(String course) {
+        this.course = course == null ? null : course.trim();
     }
 
     public Integer getPmoney() {

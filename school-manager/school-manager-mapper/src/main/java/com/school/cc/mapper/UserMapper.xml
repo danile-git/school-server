@@ -109,7 +109,7 @@
   </select>
   
    <select id="selectByWxcode" resultMap="BaseResultMap" parameterType="com.school.cc.pojo.User" >
-    SELECT u.id,u.name,u.tel,c.name as cname,c.sex as csex,c.tel as ctel,c.address as caddress,type as ctype,pmoney as cpmoney,c.time as ctime
+    SELECT u.id,u.name,u.tel,c.name as cname,c.sex as csex,c.tel as ctel,c.address as caddress,type as ctype,pmoney as cpmoney,c.time as ctime,c.course as ccourse
     FROM `user` u LEFT JOIN customer c on u.id=c.user_id
     where wx_code=#{wxCode,jdbcType=VARCHAR} and c.type=#{ctype,jdbcType=INTEGER} and u.del=0 and c.del=0
   </select>

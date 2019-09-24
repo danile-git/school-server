@@ -295,6 +295,66 @@ public class CustomerExample {
             return (Criteria) this;
         }
 
+        public Criteria andAgeIsNull() {
+            addCriterion("age is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgeIsNotNull() {
+            addCriterion("age is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgeEqualTo(Integer value) {
+            addCriterion("age =", value, "age");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgeNotEqualTo(Integer value) {
+            addCriterion("age <>", value, "age");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgeGreaterThan(Integer value) {
+            addCriterion("age >", value, "age");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgeGreaterThanOrEqualTo(Integer value) {
+            addCriterion("age >=", value, "age");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgeLessThan(Integer value) {
+            addCriterion("age <", value, "age");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgeLessThanOrEqualTo(Integer value) {
+            addCriterion("age <=", value, "age");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgeIn(List<Integer> values) {
+            addCriterion("age in", values, "age");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgeNotIn(List<Integer> values) {
+            addCriterion("age not in", values, "age");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgeBetween(Integer value1, Integer value2) {
+            addCriterion("age between", value1, value2, "age");
+            return (Criteria) this;
+        }
+
+        public Criteria andAgeNotBetween(Integer value1, Integer value2) {
+            addCriterion("age not between", value1, value2, "age");
+            return (Criteria) this;
+        }
+
         public Criteria andSexIsNull() {
             addCriterion("sex is null");
             return (Criteria) this;
@@ -552,6 +612,76 @@ public class CustomerExample {
 
         public Criteria andTypeNotBetween(Integer value1, Integer value2) {
             addCriterion("type not between", value1, value2, "type");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseIsNull() {
+            addCriterion("course is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseIsNotNull() {
+            addCriterion("course is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseEqualTo(String value) {
+            addCriterion("course =", value, "course");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseNotEqualTo(String value) {
+            addCriterion("course <>", value, "course");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseGreaterThan(String value) {
+            addCriterion("course >", value, "course");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseGreaterThanOrEqualTo(String value) {
+            addCriterion("course >=", value, "course");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseLessThan(String value) {
+            addCriterion("course <", value, "course");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseLessThanOrEqualTo(String value) {
+            addCriterion("course <=", value, "course");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseLike(String value) {
+            addCriterion("course like", value, "course");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseNotLike(String value) {
+            addCriterion("course not like", value, "course");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseIn(List<String> values) {
+            addCriterion("course in", values, "course");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseNotIn(List<String> values) {
+            addCriterion("course not in", values, "course");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseBetween(String value1, String value2) {
+            addCriterion("course between", value1, value2, "course");
+            return (Criteria) this;
+        }
+
+        public Criteria andCourseNotBetween(String value1, String value2) {
+            addCriterion("course not between", value1, value2, "course");
             return (Criteria) this;
         }
 

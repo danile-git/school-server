@@ -1,14 +1,16 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.school.cc</groupId>
-  <artifactId>school-server</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
- <parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.school.cc</groupId>
+	<artifactId>school-server</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.0.0.RELEASE</version>
 	</parent>
-	
+
 	<name>school-server</name>
 	<description>cc school</description>
 	<packaging>${pom.package}</packaging>
@@ -17,9 +19,11 @@
 		<java.version>1.8</java.version>
 		<spring-cloud.version>Finchley.RC2</spring-cloud.version>
 		<commons-fileupload.version>1.3.1</commons-fileupload.version>
+		<qcloudsms.version>1.0.6</qcloudsms.version>
 	</properties>
 
 	<dependencies>
+
 		<dependency>
 			<groupId>com.school.cc</groupId>
 			<artifactId>school-manager-service</artifactId>
@@ -44,12 +48,8 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 			<!-- 移除嵌入式tomcat插件 -->
 		</dependency>
-		<!--  
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency>-->
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-tomcat</artifactId> 
+			<scope>provided</scope> </dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -111,9 +111,15 @@
 		</dependency>
 
 		<dependency>
-		    <groupId>commons-fileupload</groupId>
-		    <artifactId>commons-fileupload</artifactId>
-		    <version>${commons-fileupload.version}</version>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>${commons-fileupload.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.github.qcloudsms/qcloudsms -->
+		<dependency>
+			<groupId>com.github.qcloudsms</groupId>
+			<artifactId>qcloudsms</artifactId>
+			<version>1.0.6</version>
 		</dependency>
 
 	</dependencies>
@@ -161,7 +167,7 @@
 		</profile>
 		<profile>
 			<id>war</id>
-		
+
 			<properties>
 				<pom.package>war</pom.package>
 				<pom.packageName>${project.artifactId}</pom.packageName>

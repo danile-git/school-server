@@ -21,12 +21,21 @@ public class User {
     private Integer csex;
     private String ctel;
     private String caddress;
+    private String ccourse;
     private Integer ctype;
     private Integer cpmoney;
     private Date ctime;
 
     
-    /**
+    public String getCcourse() {
+		return ccourse;
+	}
+
+	public void setCcourse(String ccourse) {
+		this.ccourse = ccourse;
+	}
+
+	/**
 	 * bare_field_comment
 	 */
 	public String getCname() {
